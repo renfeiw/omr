@@ -205,7 +205,7 @@ static CharFormat PrintAsStringLiteralTo(wchar_t c, ostream* os) {
 // Prints a char c as if it's part of a string literal, escaping it when
 // necessary; returns how c was formatted.
 static CharFormat PrintAsStringLiteralTo(char c, ostream* os) {
-  return PrintAsStringLiteralTo(
+  return internal::PrintAsStringLiteralTo(
       static_cast<wchar_t>(static_cast<unsigned char>(c)), os);
 }
 
