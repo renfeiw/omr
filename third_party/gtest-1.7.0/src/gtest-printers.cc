@@ -201,7 +201,7 @@ static CharFormat PrintAsStringLiteralTo(wchar_t c, ostream* os) {
 // Prints a char c as if it's part of a string literal, escaping it when
 // necessary; returns how c was formatted.
 static CharFormat PrintAsStringLiteralTo(char c, ostream* os) {
-  return internal::PrintAsStringLiteralTo(
+  return PrintAsStringLiteralTo(
       static_cast<wchar_t>(static_cast<unsigned char>(c)), os);
 }
 
@@ -265,7 +265,7 @@ static void PrintCharsAsStringTo(
       // disambiguate.
       *os << "\" " << kQuoteBegin;
     }
-    is_previous_hex = internal::PrintAsStringLiteralTo(cur, os) == kHexEscape;
+    is_previous_hex = PrintAsStringLiteralTo(cur, os) == kHexEscape;
   }
   *os << "\"";
 }
@@ -283,7 +283,7 @@ static void UniversalPrintCharArray(
   // it's '\0', such that the output matches the string literal as it's
   // written in the source code.
   if (len > 0 && begin[len - 1] == '\0') {
-    internal::PrintCharsAsStringTo(begin, len - 1, os);
+    PrintCharsAsStringTo(begin, len - 1, os);
     return;
   }
 
@@ -291,7 +291,7 @@ static void UniversalPrintCharArray(
   //    const char kFoo[] = { 'f', 'o', 'o' };
   // we must print the entire array.  We also print a message to indicate
   // that the array is not NUL-terminated.
-  internal::PrintCharsAsStringTo(begin, len, os);
+  PrintCharsAsStringTo(begin, len, os);
   *os << " (no terminating NUL)";
 }
 
@@ -312,7 +312,7 @@ void PrintTo(const char* s, ostream* os) {
     *os << "NULL";
   } else {
     *os << ImplicitCast_<const void*>(s) << " pointing to ";
-    internal::PrintCharsAsStringTo(s, strlen(s), os);
+    PrintCharsAsStringTo(s, strlen(s), os);
   }
 }
 
@@ -329,7 +329,7 @@ void PrintTo(const wchar_t* s, ostream* os) {
     *os << "NULL";
   } else {
     *os << ImplicitCast_<const void*>(s) << " pointing to ";
-    internal::PrintCharsAsStringTo(s, wcslen(s), os);
+    PrintCharsAsStringTo(s, wcslen(s), os);
   }
 }
 #endif  // wchar_t is native
@@ -337,24 +337,24 @@ void PrintTo(const wchar_t* s, ostream* os) {
 // Prints a ::string object.
 #if GTEST_HAS_GLOBAL_STRING
 void PrintStringTo(const ::string& s, ostream* os) {
-  internal::PrintCharsAsStringTo(s.data(), s.size(), os);
+  PrintCharsAsStringTo(s.data(), s.size(), os);
 }
 #endif  // GTEST_HAS_GLOBAL_STRING
 
 void PrintStringTo(const ::std::string& s, ostream* os) {
-  internal::PrintCharsAsStringTo(s.data(), s.size(), os);
+  PrintCharsAsStringTo(s.data(), s.size(), os);
 }
 
 // Prints a ::wstring object.
 #if GTEST_HAS_GLOBAL_WSTRING
 void PrintWideStringTo(const ::wstring& s, ostream* os) {
-  internal::PrintCharsAsStringTo(s.data(), s.size(), os);
+  PrintCharsAsStringTo(s.data(), s.size(), os);
 }
 #endif  // GTEST_HAS_GLOBAL_WSTRING
 
 #if GTEST_HAS_STD_WSTRING
 void PrintWideStringTo(const ::std::wstring& s, ostream* os) {
-  internal::PrintCharsAsStringTo(s.data(), s.size(), os);
+  PrintCharsAsStringTo(s.data(), s.size(), os);
 }
 #endif  // GTEST_HAS_STD_WSTRING
 
