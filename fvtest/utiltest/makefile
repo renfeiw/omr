@@ -24,6 +24,7 @@ ARTIFACT_TYPE := cxx_executable
 OBJECTS := main
 OBJECTS := $(addsuffix $(OBJEXT),$(OBJECTS))
 
+MODULE_INCLUDES +=  $(top_srcdir)/fvtest/util
 MODULE_INCLUDES += $(OMR_GTEST_INCLUDES)
 MODULE_CXXFLAGS += $(OMR_GTEST_CXXFLAGS)
 MODULE_STATIC_LIBS += \

@@ -23,6 +23,7 @@
 #include "il/DataTypes.hpp"
 #include "gtest/gtest.h"
 #include "OMRTestEnv.hpp"
+#include "omrTestHelpers.h"
 
 #ifdef MS_WINDOWS
 #undef BYTE
@@ -55,5 +56,8 @@ int main(int argc, char **argv)
    if(useOMRTestEnv)
       ::testing::AddGlobalTestEnvironment(new TestCompiler::OMRTestEnv);
 
-   return RUN_ALL_TESTS();
+   int result = RUN_ALL_TESTS();
+   OMRTEST_PRINT_STATUS(result);
+
+   return result;
    }

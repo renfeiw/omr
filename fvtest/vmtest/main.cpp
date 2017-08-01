@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "omrport.h"
 #include "testEnvironment.hpp"
 
@@ -35,5 +36,6 @@ testMain(int argc, char **argv, char **envp)
 	vmTestEnv = (PortEnvironment *)testing::AddGlobalTestEnvironment(new PortEnvironment(argc, argv));
 	int result = RUN_ALL_TESTS();
 	DETACH_J9THREAD();
+	OMRTEST_PRINT_STATUS(result);
 	return result;
 }

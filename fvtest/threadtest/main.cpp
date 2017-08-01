@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "thread_api.h"
 #include "testHelper.hpp"
 
@@ -28,7 +29,8 @@ testMain(int argc, char **argv, char **envp)
 	::testing::InitGoogleTest(&argc, argv);
 	ATTACH_J9THREAD();
 	omrTestEnv = (ThreadTestEnvironment *)testing::AddGlobalTestEnvironment(new ThreadTestEnvironment(argc, argv));
-	int rc = RUN_ALL_TESTS();
+	int result = RUN_ALL_TESTS();
 	DETACH_J9THREAD();
-	return rc;
+	OMRTEST_PRINT_STATUS(result);
+	return result;
 }

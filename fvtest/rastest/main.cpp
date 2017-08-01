@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "rasTestHelpers.hpp"
 
 extern "C" {
@@ -34,5 +35,6 @@ testMain(int argc, char **argv, char **envp)
 	rasTestEnv = (PortEnvironment *)testing::AddGlobalTestEnvironment(new PortEnvironment(argc, argv));
 	int result = RUN_ALL_TESTS();
 	DETACH_J9THREAD();
+	OMRTEST_PRINT_STATUS(result);
 	return result;
 }

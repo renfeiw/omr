@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "threadExtendedTestHelpers.hpp"
 
 ThreadExtendedTestEnvironment *omrTestEnv;
@@ -51,5 +52,6 @@ testMain(int argc, char **argv, char **envp)
 	}
 
 	thrExtendedTestTearDown(&portLibrary);
+	OMRTEST_PRINT_STATUS(result);
 	return result;
 }

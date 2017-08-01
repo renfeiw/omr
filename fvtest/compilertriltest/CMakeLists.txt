@@ -26,7 +26,7 @@ set(CXX_EXTENSIONS OFF)
 
 enable_testing()
 find_package(GTest REQUIRED)
-add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../tril/tril ${CMAKE_CURRENT_BINARY_DIR}/tril)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/../tril/tril ${CMAKE_CURRENT_BINARY_DIR}/tril ${CMAKE_CURRENT_LIST_DIR}../util)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fdiagnostics-color=always -fno-rtti -fno-threadsafe-statics -Wno-deprecated -Wno-enum-compare -Wno-invalid-offsetof -Wno-write-strings -O3 -pthread -fomit-frame-pointer -fasynchronous-unwind-tables -Wreturn-type -fno-dollars-in-identifiers -m64 -fno-strict-aliasing")
 

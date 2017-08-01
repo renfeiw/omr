@@ -55,6 +55,12 @@ omr_error_t omrTestPrintUnexpectedRC(const char *funcCall, const omr_error_t rc,
 		ASSERT_EQ(e, rc)<<#x " failed, "<< omrErrorToString(rc); \
 	} while (0)
 
+#define OMRTEST_PRINT_STATUS(x) \
+	do { \
+		if ((x == 0) && (!testing::Test::HasFailure())) { \
+			printf("[  ALL TESTS PASSED  ]\n"); \
+		} \
+	} while (0)
 
 const char *omrErrorToString(omr_error_t rc);
 BOOLEAN strStartsWith(const char *s, const char *prefix);

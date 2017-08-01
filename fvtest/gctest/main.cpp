@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "gcTestHelpers.hpp"
 
 extern "C" {
@@ -34,5 +35,6 @@ testMain(int argc, char **argv, char **envp)
 	gcTestEnv->GCTestSetUp();
 	int result = RUN_ALL_TESTS();
 	gcTestEnv->GCTestTearDown();
+	OMRTEST_PRINT_STATUS(result);
 	return result;
 }

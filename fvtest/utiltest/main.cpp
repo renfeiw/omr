@@ -22,13 +22,15 @@
 #include "omrutil.h"
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 
 int
 main(int argc, char **argv, char **envp)
 {
 	::testing::InitGoogleTest(&argc, argv);
-
-	return RUN_ALL_TESTS();
+	int result = RUN_ALL_TESTS();
+	OMRTEST_PRINT_STATUS(result);
+	return result;
 }
 
 TEST(UtilTest, detectVMDirectory)

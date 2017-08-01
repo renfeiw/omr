@@ -17,6 +17,7 @@
  *******************************************************************************/
 
 #include "omrTest.h"
+#include "omrTestHelpers.h"
 #include "omrport.h"
 #include "portTestHelpers.hpp"
 #include "testHelpers.hpp"
@@ -73,6 +74,8 @@ testMain(int argc, char **argv, char **envp)
 	}
 
 	DETACH_J9THREAD();
+
+	OMRTEST_PRINT_STATUS(result);
 
 	if (earlyExit) {
 		printf("exiting from testMain\n");
